@@ -69,6 +69,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\SimpleComand.cs" />
+    <Compile Include="Classes\ConnectionDB.cs" />
     <Compile Include="StartUpWindow.xaml.cs">
       <DependentUpon>StartUpWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -121,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
