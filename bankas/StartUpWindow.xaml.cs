@@ -18,9 +18,9 @@ namespace bankas
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StartUpWindow : Window
     {
-        public MainWindow()
+        public StartUpWindow()
         {
             InitializeComponent();
         }
