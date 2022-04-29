@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace bankas.Commands
 {
-    public static class SimpleCommand
+    class SimpleCommand
     {
         public static bool CheckTextBox(TextBox tb)
         {

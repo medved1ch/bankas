@@ -12,7 +12,7 @@ namespace bankas.Classes
         public byte[] GetHashPassword(string pass)
         {
             byte[] tmpHash;
-            tmpHash = ASCIIEncoding.ASCII.GetBytes(pass);
+            tmpHash = Encoding.ASCII.GetBytes(pass);
 
             tmpHash = new MD5CryptoServiceProvider().ComputeHash(tmpHash);
             return tmpHash;

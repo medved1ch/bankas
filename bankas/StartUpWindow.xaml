@@ -396,7 +396,7 @@
     <Grid>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="340" Margin="25,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="742.268"/>
         <Image HorizontalAlignment="Left" Height="80.336" Margin="25,50,0,0" VerticalAlignment="Top" Width="85" Source="image/bitok.png"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="130" Margin="25.667,130.336,0,0" VerticalAlignment="Top" Width="85" Style="{DynamicResource ButtonStyle1}"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" IsEnabled="False" Height="130" Margin="25.667,130.336,0,0" VerticalAlignment="Top" Width="85" Style="{DynamicResource ButtonStyle1}"/>
         <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Height="130" Margin="25.667,259.333,0,0" VerticalAlignment="Top" Width="85" Style="{DynamicResource ButtonStyle2}"/>
         <Grid x:Name="SignInPic" Margin="110,30,335,40" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
@@ -420,8 +420,8 @@
         <Grid x:Name="SignUp" Margin="485,75,65,95" Visibility="Hidden">
             <TextBlock HorizontalAlignment="Left" Height="22.633" Margin="9,0,0,0" TextWrapping="Wrap" Text="Already have an account? Sign In" VerticalAlignment="Top" Width="240" Foreground="#FF555555"/>
             <hc:TextBox x:Name="TbUN" hc:InfoElement.Placeholder="myusername" hc:TitleElement.Title="Username" Margin="0,27.633,0,186.367"/>
-            <hc:TextBox x:Name="TbMail" hc:InfoElement.Placeholder="youremail@example.com" hc:TitleElement.Title="E-Mail" Margin="0,93.633,0,120.367"/>
-            <hc:PasswordBox x:Name="PbPass" hc:InfoElement.Placeholder="mypassword" hc:TitleElement.Title="Password" ShowEyeButton="True" ShowClearButton="True" Margin="0,159.633,0,55"/>
+            <hc:TextBox x:Name="TbMailUp" hc:InfoElement.Placeholder="youremail@example.com" hc:TitleElement.Title="E-Mail" Margin="0,93.633,0,120.367"/>
+            <hc:PasswordBox x:Name="PbPassUp" hc:InfoElement.Placeholder="mypassword" hc:TitleElement.Title="Password" ShowEyeButton="True" ShowClearButton="True" Margin="0,159.633,0,55"/>
             <Button x:Name="BtnSignUp" Content="SIGN UP" HorizontalAlignment="Left" Height="35" Margin="0,245,0,0" VerticalAlignment="Top" Width="250" Background="#FF140E43" Foreground="White" FontWeight="Bold" Click="BtnSignUp_Click"/>
         </Grid>
         <Grid x:Name="SignIn" Margin="485,75,65,95" RenderTransformOrigin="0.5,0.5">
@@ -435,7 +435,7 @@
             </Grid.RenderTransform>
             <TextBlock HorizontalAlignment="Left" Height="22.633" Margin="9,0,0,0" TextWrapping="Wrap" Text="Don`t have an account? Sign Up" VerticalAlignment="Top" Width="240" Foreground="#FF555555"/>
             <hc:TextBox x:Name="TbMailIn" hc:InfoElement.Placeholder="youremail@example.com" hc:TitleElement.Title="E-Mail" Margin="0,34.633,0,179.367"/>
-            <hc:PasswordBox x:Name="TbPassIn" hc:InfoElement.Placeholder="mypassword" hc:TitleElement.Title="Password" ShowEyeButton="True" ShowClearButton="True" Margin="0,105.633,0,109"/>
+            <hc:PasswordBox x:Name="PbPassIn" hc:InfoElement.Placeholder="mypassword" hc:TitleElement.Title="Password" ShowEyeButton="True" ShowClearButton="True" Margin="0,105.633,0,109"/>
             <Button x:Name="BtnSignIn" Content="SIGN IN" HorizontalAlignment="Left" Height="35" Margin="0,186,0,0" VerticalAlignment="Top" Width="250" Background="#FF140E43" Foreground="White" FontWeight="Bold" Click="BtnSignIn_Click"/>
         </Grid>
         <Button x:Name="BtnCloseApp" HorizontalAlignment="Left" Height="24" Margin="735.334,55.173,0,0" VerticalAlignment="Top" Width="24" Style="{DynamicResource ButtonStyle3}" Click="BtnCloseApp_Click"/>
