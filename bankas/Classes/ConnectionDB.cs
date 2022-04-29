@@ -8,10 +8,9 @@ namespace bankas.Connection
 {
     class ConnectionDB
     {
-        public static string conn =
-                  "Network Library=;" +
-                  "Data Source=;" +
-                  "Initial Catalog=;" +
+        public static string conn = 
+                  "Data Source=192.168.50.154;" +
+                  "Initial Catalog=bsav;" +
                   "User Id=admin;" +
                   "Password=admin;";
     }

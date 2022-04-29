@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Vacancies.Models
+namespace bankas.Commands
 {
-    public static class SimpleComand
+    public static class SimpleCommand
     {
         public static bool CheckTextBox(TextBox tb)
         {
@@ -82,7 +82,7 @@ namespace Vacancies.Models
             return tmpHash;
         }
 
-        public static bool ChechHashEquil(byte[] one, byte[] two)
+        public static bool CheckHashEquil(byte[] one, byte[] two)
         {
             bool bEqual = false;
             if (two.Length == one.Length)

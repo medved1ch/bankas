@@ -422,7 +422,7 @@
             <hc:TextBox x:Name="TbUN" hc:InfoElement.Placeholder="myusername" hc:TitleElement.Title="Username" Margin="0,27.633,0,186.367"/>
             <hc:TextBox x:Name="TbMail" hc:InfoElement.Placeholder="youremail@example.com" hc:TitleElement.Title="E-Mail" Margin="0,93.633,0,120.367"/>
             <hc:PasswordBox x:Name="PbPass" hc:InfoElement.Placeholder="mypassword" hc:TitleElement.Title="Password" ShowEyeButton="True" ShowClearButton="True" Margin="0,159.633,0,55"/>
-            <Button x:Name="BtnSignUp" Content="SIGN UP" HorizontalAlignment="Left" Height="35" Margin="0,245,0,0" VerticalAlignment="Top" Width="250" Background="#FF140E43" Foreground="White" FontWeight="Bold"/>
+            <Button x:Name="BtnSignUp" Content="SIGN UP" HorizontalAlignment="Left" Height="35" Margin="0,245,0,0" VerticalAlignment="Top" Width="250" Background="#FF140E43" Foreground="White" FontWeight="Bold" Click="BtnSignUp_Click"/>
         </Grid>
         <Grid x:Name="SignIn" Margin="485,75,65,95" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
@@ -436,7 +436,7 @@
             <TextBlock HorizontalAlignment="Left" Height="22.633" Margin="9,0,0,0" TextWrapping="Wrap" Text="Don`t have an account? Sign Up" VerticalAlignment="Top" Width="240" Foreground="#FF555555"/>
             <hc:TextBox x:Name="TbMailIn" hc:InfoElement.Placeholder="youremail@example.com" hc:TitleElement.Title="E-Mail" Margin="0,34.633,0,179.367"/>
             <hc:PasswordBox x:Name="TbPassIn" hc:InfoElement.Placeholder="mypassword" hc:TitleElement.Title="Password" ShowEyeButton="True" ShowClearButton="True" Margin="0,105.633,0,109"/>
-            <Button x:Name="BtnSignIn" Content="SIGN IN" HorizontalAlignment="Left" Height="35" Margin="0,186,0,0" VerticalAlignment="Top" Width="250" Background="#FF140E43" Foreground="White" FontWeight="Bold"/>
+            <Button x:Name="BtnSignIn" Content="SIGN IN" HorizontalAlignment="Left" Height="35" Margin="0,186,0,0" VerticalAlignment="Top" Width="250" Background="#FF140E43" Foreground="White" FontWeight="Bold" Click="BtnSignIn_Click"/>
         </Grid>
         <Button x:Name="BtnCloseApp" HorizontalAlignment="Left" Height="24" Margin="735.334,55.173,0,0" VerticalAlignment="Top" Width="24" Style="{DynamicResource ButtonStyle3}" Click="BtnCloseApp_Click"/>
         <Button x:Name="BtnMinimize" HorizontalAlignment="Left" Height="24" Margin="708.266,55.173,0,0" VerticalAlignment="Top" Width="24" Style="{DynamicResource ButtonStyle4}" Click="BtnMinimize_Click"/>
