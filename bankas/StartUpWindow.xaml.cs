@@ -55,32 +55,35 @@ namespace bankas
                 using (SqlConnection connection = new SqlConnection(ConnectionDB.conn))
                     try
                     {
-                        byte[] Pass;
-                        Encryption f = new Encryption();
-                        Pass = f.GetHashPassword(PbPassIn.Password);
+                        
                         connection.Open();
-                        string query = $@"SELECT  COUNT(*) FROM Accounts WHERE Email=@Mail AND Pass=@Pass";
-                        SqlCommand cmd = new SqlCommand(query, connection);
-                        cmd.Parameters.AddWithValue("@Mail", TbMailIn.Text.ToLower());
-                        cmd.Parameters.AddWithValue("@Pass", Pass);
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-                        if (count == 1)
+                        string Mail = TbMailIn.Text.ToLower();
+                        var Pass = SimpleCommand.GetHash(PbPassIn.Password);
+                        using (SqlCommand cmd1 = new SqlCommand($@"SELECT  COUNT(*) FROM Accounts WHERE Email='{Mail}' AND Pass=@binaryValue", connection))
                         {
-                            string query2 = $@"SELECT id FROM Accounts WHERE Email=@Mail";
-                            SqlCommand cmd2 = new SqlCommand(query2, connection);
-                            cmd2.Parameters.AddWithValue("@Mail", TbMailIn.Text.ToLower());
-                            int countID = Convert.ToInt32(cmd2.ExecuteScalar());
-                            connection.Close();
-                            MessageBox.Show("Добро пожаловать!");
-                            MainMenu menu = new MainMenu();
-                            menu.Show();
-                            this.Close();
 
+                            cmd1.Parameters.Add("@binaryValue", SqlDbType.VarBinary).Value = Pass;
+
+                            //cmd1.Parameters.AddWithValue("@Mail", TbMailIn.Text.ToLower());
+                            int count = Convert.ToInt32(cmd1.ExecuteScalar());
+                            if (count == 1)
+                            {
+                                string query2 = $@"SELECT id FROM Accounts WHERE Email=@Mail";
+                                SqlCommand cmd2 = new SqlCommand(query2, connection);
+                                cmd2.Parameters.AddWithValue("@Mail", TbMailIn.Text.ToLower());
+                                int countID = Convert.ToInt32(cmd2.ExecuteScalar());
+                                MessageBox.Show("Добро пожаловать!");
+                                MainMenu menu = new MainMenu();
+                                menu.Show();
+                                this.Close();
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Неверное имя пользователя или пароль");
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("Неверное имя пользователя или пароль");
-                        }
+                        
                     }
                     catch (SqlException ex)
                     {
@@ -115,16 +118,14 @@ namespace bankas
                     {
                         try
                         {
-                            
-                            Encryption f = new Encryption();
-                            byte[] Pass = f.GetHashPassword(PbPassUp.Password);
+                            var Pass = SimpleCommand.GetHash(PbPassUp.Password);
+                            using (SqlCommand cmd1 = new SqlCommand($@"insert into Accounts(Login, Email, Pass) values ('{Login}','{Mail}', @binaryValue)", connection))
+                            {
 
-                            string query1 = $@"insert into Accounts(Login, Email, Pass) values ('{Login}','{Mail}', '@BinData')";
-                            cmd = new SqlCommand(query1, connection);
-                            SqlParameter param = cmd.Parameters.AddWithValue("@BinData", Pass);
-                            param.DbType = DbType.Binary;
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Успешная регистрация!");
+                                cmd1.Parameters.Add("@binaryValue", SqlDbType.VarBinary).Value = Pass;
+                                cmd1.ExecuteNonQuery();
+                                MessageBox.Show("Успешная регистрация!");
+                            }
                         }
                         catch (SqlException ex)
                         {

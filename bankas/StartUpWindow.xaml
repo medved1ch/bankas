@@ -396,7 +396,7 @@
     <Grid>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="340" Margin="25,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="742.268"/>
         <Image HorizontalAlignment="Left" Height="80.336" Margin="25,50,0,0" VerticalAlignment="Top" Width="85" Source="image/bitok.png"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" IsEnabled="False" Height="130" Margin="25.667,130.336,0,0" VerticalAlignment="Top" Width="85" Style="{DynamicResource ButtonStyle1}"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="130" Margin="25.667,130.336,0,0" VerticalAlignment="Top" Width="85" Style="{DynamicResource ButtonStyle1}"/>
         <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Height="130" Margin="25.667,259.333,0,0" VerticalAlignment="Top" Width="85" Style="{DynamicResource ButtonStyle2}"/>
         <Grid x:Name="SignInPic" Margin="110,30,335,40" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
