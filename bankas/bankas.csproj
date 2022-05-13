@@ -132,6 +132,5 @@
   <ItemGroup>
     <Resource Include="image\minimize.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

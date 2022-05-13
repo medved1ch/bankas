@@ -24,6 +24,7 @@ namespace bankas
     /// </summary>
     public partial class StartUpWindow : Window
     {
+        string IPReg, IPLast;
         public StartUpWindow()
         {
             InitializeComponent();
@@ -43,6 +44,17 @@ namespace bankas
         {
             this.DragMove();
         }
+        public void InfoIP() //Получение ip-адреса.
+        {
+            // Получение имени компьютера.
+            String host = System.Net.Dns.GetHostName();
+            // Получение ip-адреса.
+            System.Net.IPAddress IPReg0 = System.Net.Dns.GetHostByName(host).AddressList[0];
+            System.Net.IPAddress IPLast0 = System.Net.Dns.GetHostByName(host).AddressList[0];
+            IPLast = IPLast0.ToString();
+            IPReg = IPReg0.ToString();
+            // MessageBox.Show(IPReg.ToString());
+        }
 
         private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +71,7 @@ namespace bankas
                         connection.Open();
                         string Mail = TbMailIn.Text.ToLower();
                         var Pass = SimpleCommand.GetHash(PbPassIn.Password);
+
                         using (SqlCommand cmd1 = new SqlCommand($@"SELECT  COUNT(*) FROM Accounts WHERE Email='{Mail}' AND Pass=@binaryValue", connection))
                         {
 
@@ -68,8 +81,11 @@ namespace bankas
                             int count = Convert.ToInt32(cmd1.ExecuteScalar());
                             if (count == 1)
                             {
+                                InfoIP();
                                 string query2 = $@"SELECT id FROM Accounts WHERE Email=@Mail";
                                 SqlCommand cmd2 = new SqlCommand(query2, connection);
+                                string query3 = $@"UPDATE Accounts SET IPLast='{IPLast}' WHERE Email=@Mail";
+                                SqlCommand cmd3 = new SqlCommand(query3, connection);
                                 cmd2.Parameters.AddWithValue("@Mail", TbMailIn.Text.ToLower());
                                 int countID = Convert.ToInt32(cmd2.ExecuteScalar());
                                 MessageBox.Show("Добро пожаловать!");
@@ -98,11 +114,23 @@ namespace bankas
 
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
         {
-
+            if (String.IsNullOrEmpty(TbMailUp.Text) || String.IsNullOrEmpty(PbPassUp.Password) || String.IsNullOrEmpty(TbUN.Text))
+            {
+                MessageBox.Show("Заполните поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (TbUN.Text.Length < 4)
+            {
+                MessageBox.Show(" Логин должен быть больше 3", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (PbPassUp.Password.Length < 6)
+            {
+                MessageBox.Show(" Пароль должен быть больше 5", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionDB.conn))
                 {
+                    
                     connection.Open();
                     string Login = TbUN.Text;
                     string Mail = TbMailUp.Text.ToLower();
@@ -119,7 +147,8 @@ namespace bankas
                         try
                         {
                             var Pass = SimpleCommand.GetHash(PbPassUp.Password);
-                            using (SqlCommand cmd1 = new SqlCommand($@"insert into Accounts(Login, Email, Pass) values ('{Login}','{Mail}', @binaryValue)", connection))
+                            InfoIP();
+                            using (SqlCommand cmd1 = new SqlCommand($@"insert into Accounts(Login, Email, Pass, IPReg, IPLast) values ('{Login}','{Mail}', @binaryValue, '{IPReg}','{IPLast}')", connection))
                             {
 
                                 cmd1.Parameters.Add("@binaryValue", SqlDbType.VarBinary).Value = Pass;
