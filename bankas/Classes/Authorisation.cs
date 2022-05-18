@@ -42,6 +42,7 @@ namespace bankas.Classes
                 SimpleCommand sc = new SimpleCommand();
                 if (sc.CheckHashEquil(usr.Pass, sc.GetHash(PbPassIn.Password)))
                 {
+                    IdSave.Login = usr.Login;
                     MessageBox.Show($"Здравствуйте, {usr.Login}");
                     MainMenu menu = new MainMenu();
                     menu.Show();

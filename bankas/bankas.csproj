@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="Classes\Authorisation.cs" />
     <Compile Include="Classes\Encryption.cs" />
+    <Compile Include="Classes\IdSave.cs" />
     <Compile Include="Classes\Registration.cs" />
     <Compile Include="Classes\SimpleCommand.cs" />
     <Compile Include="Classes\ConnectionDB.cs" />
@@ -211,6 +212,7 @@
     <Resource Include="image\minimize.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="image\logout.png" />
     <Resource Include="image\icons8-bitcoin-accepted-48.png" />
     <Resource Include="credit-card.png" />
     <Content Include="Database\BankSys.Context.tt">

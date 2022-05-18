@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
+using bankas.Classes;
 
 namespace bankas
 {
@@ -25,12 +26,33 @@ namespace bankas
         public MainMenu()
         {
             InitializeComponent();
-
+            LoadDateLog();
+        }
+        public void LoadDateLog() //Загрузка счетов клиента
+        {
+            txtLog.Text = IdSave.Login;
         }
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+            private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void BtnMin_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            StartUpWindow start = new StartUpWindow();
+            start.Show();
+            this.Close();
         }
     }
 }
