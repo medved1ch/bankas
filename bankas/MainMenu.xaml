@@ -4,9 +4,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:bankas"
+        xmlns:hc="https://handyorg.github.io/handycontrol"  
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainMenu" Height="450" Width="800">
-    <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
-        
+        Title="Главное меню" WindowStartupLocation="CenterScreen" Height="550" Width="850" AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid>
+        <StackPanel Height="550" Width="220" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF3557DA">
+            <StackPanel Height="65" Orientation="Horizontal">
+                <Image Margin="10,5,0,0" Source="/image/bitok.png" Height="40" Width="40"/>
+                <TextBlock Height="40" TextWrapping="Wrap" Text="BitBank" Width="60" FontWeight="Bold" Foreground="White" Margin="10,30,0,15" FontSize="16"/>
+            </StackPanel>
+            <Path Data="M0,60 L220,60" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="0,10,0,0" Stroke="White" Stretch="Fill" Width="220"/>
+            <hc:SideMenu BorderThickness="1" Width="220" Margin="0, 32" SideBrush="{x:Null}" BorderBrush="{x:Null}" SubSideBrush="{x:Null}" Background="{x:Null}">
+                <hc:Interaction.Triggers>
+                    <hc:EventTrigger EventName="SelectionChanged">
+                        <hc:EventToCommand Command="{Binding SwitchItemCmd}" PassEventArgsToCommand="True" />
+                    </hc:EventTrigger>
+                </hc:Interaction.Triggers>
+                <hc:SideMenuItem Header="Главная" Background="{x:Null}">
+                    <hc:SideMenuItem.Icon>
+                        <Image  Width="24" Height="24" Source="/image/icons8-home-48.png"/>
+                    </hc:SideMenuItem.Icon>
+                </hc:SideMenuItem>
+                <hc:SideMenuItem Header="Платежи" Background="{x:Null}">
+                    <hc:SideMenuItem.Icon>
+                        <Image  Width="24" Height="24" Source="/image/icons8-bitcoin-accepted-48.png"/>
+                    </hc:SideMenuItem.Icon>
+                </hc:SideMenuItem>
+                <hc:SideMenuItem Header="Настройки" Background="{x:Null}">
+                    <hc:SideMenuItem.Icon>
+                        <Image  Width="24" Height="24" Source="/image/icons8-settings-30.png"/>
+                    </hc:SideMenuItem.Icon>
+                </hc:SideMenuItem>
+
+            </hc:SideMenu>
+        </StackPanel>
+
+
     </Grid>
 </Window>

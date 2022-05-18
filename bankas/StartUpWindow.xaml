@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:bankas"
         xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:easy="clr-namespace:EasyCaptcha.Wpf;assembly=EasyCaptcha.Wpf"
         mc:Ignorable="d"
         Title="Начальное окно" WindowStartupLocation="CenterScreen" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Window.Resources>
@@ -436,6 +437,7 @@
             <TextBlock HorizontalAlignment="Left" Height="22.633" Margin="9,0,0,0" TextWrapping="Wrap" Text="Don`t have an account? Sign Up" VerticalAlignment="Top" Width="240" Foreground="#FF555555"/>
             <hc:TextBox x:Name="TbMailIn" hc:InfoElement.Placeholder="youremail@example.com" hc:TitleElement.Title="E-Mail" Margin="0,34.633,0,179.367"/>
             <hc:PasswordBox x:Name="PbPassIn" hc:InfoElement.Placeholder="mypassword" hc:TitleElement.Title="Password" ShowEyeButton="True" ShowClearButton="True" Margin="0,105.633,0,109"/>
+
             <Button x:Name="BtnSignIn" Content="SIGN IN" HorizontalAlignment="Left" Height="35" Margin="0,186,0,0" VerticalAlignment="Top" Width="250" Background="#FF140E43" Foreground="White" FontWeight="Bold" Click="BtnSignIn_Click"/>
         </Grid>
         <Button x:Name="BtnCloseApp" HorizontalAlignment="Left" Height="24" Margin="735.334,55.173,0,0" VerticalAlignment="Top" Width="24" Style="{DynamicResource ButtonStyle3}" Click="BtnCloseApp_Click"/>

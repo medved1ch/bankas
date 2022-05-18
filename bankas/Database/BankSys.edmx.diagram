@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69029f5ed74e4e559aa06df740cbbbdd" Name="Diagram1" ZoomLevel="101">
+        <EntityTypeShape EntityType="bsavModel.Accounts" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="bsavModel.Bills" Width="1.5" PointX="5.25" PointY="0.875" />
+        <EntityTypeShape EntityType="bsavModel.BillsTypes" Width="1.5" PointX="3" PointY="2" />
+        <EntityTypeShape EntityType="bsavModel.Cities" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="bsavModel.Filials" Width="1.5" PointX="3" PointY="11.625" />
+        <EntityTypeShape EntityType="bsavModel.Gender" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="bsavModel.LegalPerson" Width="1.5" PointX="5.25" PointY="5.25" />
+        <EntityTypeShape EntityType="bsavModel.Operations" Width="1.5" PointX="7.5" PointY="1.75" />
+        <EntityTypeShape EntityType="bsavModel.PasportAttorney" Width="1.5" PointX="3" PointY="15.25" />
+        <EntityTypeShape EntityType="bsavModel.PhysicalPerson" Width="1.5" PointX="8.25" PointY="5.25" />
+        <EntityTypeShape EntityType="bsavModel.Statuses" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="bsavModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="8.75" />
+        <AssociationConnector Association="bsavModel.FK_Accounts_Statuses" />
+        <AssociationConnector Association="bsavModel.FK_Bills_Accounts" />
+        <AssociationConnector Association="bsavModel.FK_LegalPerson_Accounts" />
+        <AssociationConnector Association="bsavModel.FK_PhysicalPerson_Accounts" />
+        <AssociationConnector Association="bsavModel.FK_Bills_BillsTypes1" />
+        <AssociationConnector Association="bsavModel.FK_Bills_Cities" />
+        <AssociationConnector Association="bsavModel.FK_Bills_Filials" />
+        <AssociationConnector Association="bsavModel.FK_Operations_Bills" />
+        <AssociationConnector Association="bsavModel.FK_PasportAttorney_Pol" />
+        <AssociationConnector Association="bsavModel.FK_PhysicalPerson_Pol" />
+        <AssociationConnector Association="bsavModel.FK_LegalPerson_PasportAttorney" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

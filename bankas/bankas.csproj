@@ -38,11 +38,29 @@
     <ApplicationIcon>image\graphicloads-flat-finance-bank.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EasyCaptcha.Wpf, Version=0.9.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyCaptcha.Wpf.0.9.0.3\lib\net45\EasyCaptcha.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="HandyControl, Version=3.3.0.0, Culture=neutral, PublicKeyToken=45be8712787a1e5b, processorArchitecture=MSIL">
       <HintPath>..\packages\HandyControls.3.3.11\lib\net472\HandyControl.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -73,9 +91,62 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Authorisation.cs" />
     <Compile Include="Classes\Encryption.cs" />
+    <Compile Include="Classes\Registration.cs" />
     <Compile Include="Classes\SimpleCommand.cs" />
     <Compile Include="Classes\ConnectionDB.cs" />
+    <Compile Include="Database\Accounts.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\BankSys.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankSys.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\BankSys.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\BankSys.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankSys.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Bills.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\BillsTypes.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Cities.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Filials.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Gender.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\LegalPerson.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Operations.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\PasportAttorney.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\PhysicalPerson.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Statuses.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\sysdiagrams.cs">
+      <DependentUpon>BankSys.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
@@ -102,6 +173,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Database\BankSys.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BankSys.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\BankSys.edmx.diagram">
+      <DependentUpon>BankSys.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -131,6 +209,25 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\icons8-bitcoin-accepted-48.png" />
+    <Resource Include="credit-card.png" />
+    <Content Include="Database\BankSys.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BankSys.Context.cs</LastGenOutput>
+      <DependentUpon>BankSys.edmx</DependentUpon>
+    </Content>
+    <Content Include="Database\BankSys.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BankSys.edmx</DependentUpon>
+      <LastGenOutput>BankSys.cs</LastGenOutput>
+    </Content>
+    <Resource Include="image\icons8-home-48.png" />
+    <Resource Include="image\icons8-settings-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

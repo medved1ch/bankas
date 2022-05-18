@@ -70,7 +70,7 @@ namespace bankas.Classes
             Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
             return regex.IsMatch(s);
         }
-        public static byte[] GetHash(string text)
+        public byte[] GetHash(string text)
         {
             byte[] tmpSource;
             byte[] tmpHash;
@@ -82,7 +82,7 @@ namespace bankas.Classes
             return tmpHash;
         }
 
-        public static bool CheckHashEquil(byte[] one, byte[] two)
+        public bool CheckHashEquil(byte[] one, byte[] two)
         {
             bool bEqual = false;
             if (two.Length == one.Length)

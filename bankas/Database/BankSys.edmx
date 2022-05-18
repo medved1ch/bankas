@@ -1,0 +1,812 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище bsavModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="30" />
+          <Property Name="Pass" Type="varbinary(max)" Nullable="false" />
+          <Property Name="IPReg" Type="nvarchar" MaxLength="50" />
+          <Property Name="IPLast" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IDStatus" Type="int" />
+          <Property Name="SecretWord" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Bills">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDOperation" Type="int" Nullable="false" />
+          <Property Name="IDFilial" Type="int" Nullable="false" />
+          <Property Name="IDType" Type="int" Nullable="false" />
+          <Property Name="IDAccount" Type="int" />
+          <Property Name="DataOpen" Type="datetime" />
+          <Property Name="DataClose" Type="datetime" />
+          <Property Name="IDCity" Type="int" />
+        </EntityType>
+        <EntityType Name="BillsTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Filials">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumberFilial" Type="int" />
+          <Property Name="Adress" Type="nchar" MaxLength="10" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="TimeOpen" Type="time" Precision="7" />
+          <Property Name="TimeClose" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LegalPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="OGPH" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="INN" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="EGPUL" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="LegalAdress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IDPass" Type="int" Nullable="false" />
+          <Property Name="Doverinnosti" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeOper" Type="datetime" />
+          <Property Name="SumOper" Type="int" />
+        </EntityType>
+        <EntityType Name="PasportAttorney">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerriaPas" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="NumberPas" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Pol" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhysicalPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="150" />
+          <Property Name="SeriaPas" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="NumberPas" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="IDGender" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Accounts_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="0..1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="IDStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bills_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="IDAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bills_BillsTypes1">
+          <End Role="BillsTypes" Type="Self.BillsTypes" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillsTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="IDType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bills_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="IDCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bills_Filials">
+          <End Role="Filials" Type="Self.Filials" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Filials">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="IDFilial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalPerson_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="LegalPerson" Type="Self.LegalPerson" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LegalPerson">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalPerson_PasportAttorney">
+          <End Role="PasportAttorney" Type="Self.PasportAttorney" Multiplicity="1" />
+          <End Role="LegalPerson" Type="Self.LegalPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasportAttorney">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LegalPerson">
+              <PropertyRef Name="IDPass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operations_Bills">
+          <End Role="Bills" Type="Self.Bills" Multiplicity="1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bills">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PasportAttorney_Pol">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="PasportAttorney" Type="Self.PasportAttorney" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PasportAttorney">
+              <PropertyRef Name="Pol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhysicalPerson_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="PhysicalPerson" Type="Self.PhysicalPerson" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhysicalPerson">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhysicalPerson_Pol">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="PhysicalPerson" Type="Self.PhysicalPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhysicalPerson">
+              <PropertyRef Name="IDGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище bsavModelContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bills" EntityType="Self.Bills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillsTypes" EntityType="Self.BillsTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Filials" EntityType="Self.Filials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LegalPerson" EntityType="Self.LegalPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasportAttorney" EntityType="Self.PasportAttorney" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhysicalPerson" EntityType="Self.PhysicalPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accounts_Statuses" Association="Self.FK_Accounts_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bills_Accounts" Association="Self.FK_Bills_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bills_BillsTypes1" Association="Self.FK_Bills_BillsTypes1">
+            <End Role="BillsTypes" EntitySet="BillsTypes" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bills_Cities" Association="Self.FK_Bills_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bills_Filials" Association="Self.FK_Bills_Filials">
+            <End Role="Filials" EntitySet="Filials" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalPerson_Accounts" Association="Self.FK_LegalPerson_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="LegalPerson" EntitySet="LegalPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalPerson_PasportAttorney" Association="Self.FK_LegalPerson_PasportAttorney">
+            <End Role="PasportAttorney" EntitySet="PasportAttorney" />
+            <End Role="LegalPerson" EntitySet="LegalPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operations_Bills" Association="Self.FK_Operations_Bills">
+            <End Role="Bills" EntitySet="Bills" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PasportAttorney_Pol" Association="Self.FK_PasportAttorney_Pol">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="PasportAttorney" EntitySet="PasportAttorney" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhysicalPerson_Accounts" Association="Self.FK_PhysicalPerson_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="PhysicalPerson" EntitySet="PhysicalPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhysicalPerson_Pol" Association="Self.FK_PhysicalPerson_Pol">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="PhysicalPerson" EntitySet="PhysicalPerson" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bsavModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BankEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="bsavModel.Accounts" />
+          <EntitySet Name="Bills" EntityType="bsavModel.Bills" />
+          <EntitySet Name="BillsTypes" EntityType="bsavModel.BillsTypes" />
+          <EntitySet Name="Cities" EntityType="bsavModel.Cities" />
+          <EntitySet Name="Filials" EntityType="bsavModel.Filials" />
+          <EntitySet Name="Gender" EntityType="bsavModel.Gender" />
+          <EntitySet Name="LegalPerson" EntityType="bsavModel.LegalPerson" />
+          <EntitySet Name="Operations" EntityType="bsavModel.Operations" />
+          <EntitySet Name="PasportAttorney" EntityType="bsavModel.PasportAttorney" />
+          <EntitySet Name="PhysicalPerson" EntityType="bsavModel.PhysicalPerson" />
+          <EntitySet Name="Statuses" EntityType="bsavModel.Statuses" />
+          <EntitySet Name="sysdiagrams" EntityType="bsavModel.sysdiagrams" />
+          <AssociationSet Name="FK_Accounts_Statuses" Association="bsavModel.FK_Accounts_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bills_Accounts" Association="bsavModel.FK_Bills_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalPerson_Accounts" Association="bsavModel.FK_LegalPerson_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="LegalPerson" EntitySet="LegalPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhysicalPerson_Accounts" Association="bsavModel.FK_PhysicalPerson_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="PhysicalPerson" EntitySet="PhysicalPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bills_BillsTypes1" Association="bsavModel.FK_Bills_BillsTypes1">
+            <End Role="BillsTypes" EntitySet="BillsTypes" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bills_Cities" Association="bsavModel.FK_Bills_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bills_Filials" Association="bsavModel.FK_Bills_Filials">
+            <End Role="Filials" EntitySet="Filials" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operations_Bills" Association="bsavModel.FK_Operations_Bills">
+            <End Role="Bills" EntitySet="Bills" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PasportAttorney_Pol" Association="bsavModel.FK_PasportAttorney_Pol">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="PasportAttorney" EntitySet="PasportAttorney" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhysicalPerson_Pol" Association="bsavModel.FK_PhysicalPerson_Pol">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="PhysicalPerson" EntitySet="PhysicalPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LegalPerson_PasportAttorney" Association="bsavModel.FK_LegalPerson_PasportAttorney">
+            <End Role="PasportAttorney" EntitySet="PasportAttorney" />
+            <End Role="LegalPerson" EntitySet="LegalPerson" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="IPReg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IPLast" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDStatus" Type="Int32" />
+          <Property Name="SecretWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Statuses" Relationship="bsavModel.FK_Accounts_Statuses" FromRole="Accounts" ToRole="Statuses" />
+          <NavigationProperty Name="Bills" Relationship="bsavModel.FK_Bills_Accounts" FromRole="Accounts" ToRole="Bills" />
+          <NavigationProperty Name="LegalPerson" Relationship="bsavModel.FK_LegalPerson_Accounts" FromRole="Accounts" ToRole="LegalPerson" />
+          <NavigationProperty Name="PhysicalPerson" Relationship="bsavModel.FK_PhysicalPerson_Accounts" FromRole="Accounts" ToRole="PhysicalPerson" />
+        </EntityType>
+        <EntityType Name="Bills">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDOperation" Type="Int32" Nullable="false" />
+          <Property Name="IDFilial" Type="Int32" Nullable="false" />
+          <Property Name="IDType" Type="Int32" Nullable="false" />
+          <Property Name="IDAccount" Type="Int32" />
+          <Property Name="DataOpen" Type="DateTime" Precision="3" />
+          <Property Name="DataClose" Type="DateTime" Precision="3" />
+          <Property Name="IDCity" Type="Int32" />
+          <NavigationProperty Name="Accounts" Relationship="bsavModel.FK_Bills_Accounts" FromRole="Bills" ToRole="Accounts" />
+          <NavigationProperty Name="BillsTypes" Relationship="bsavModel.FK_Bills_BillsTypes1" FromRole="Bills" ToRole="BillsTypes" />
+          <NavigationProperty Name="Cities" Relationship="bsavModel.FK_Bills_Cities" FromRole="Bills" ToRole="Cities" />
+          <NavigationProperty Name="Filials" Relationship="bsavModel.FK_Bills_Filials" FromRole="Bills" ToRole="Filials" />
+          <NavigationProperty Name="Operations" Relationship="bsavModel.FK_Operations_Bills" FromRole="Bills" ToRole="Operations" />
+        </EntityType>
+        <EntityType Name="BillsTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bills" Relationship="bsavModel.FK_Bills_BillsTypes1" FromRole="BillsTypes" ToRole="Bills" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bills" Relationship="bsavModel.FK_Bills_Cities" FromRole="Cities" ToRole="Bills" />
+        </EntityType>
+        <EntityType Name="Filials">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumberFilial" Type="Int32" />
+          <Property Name="Adress" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="TimeOpen" Type="Time" Precision="7" />
+          <Property Name="TimeClose" Type="Time" Precision="7" />
+          <NavigationProperty Name="Bills" Relationship="bsavModel.FK_Bills_Filials" FromRole="Filials" ToRole="Bills" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PasportAttorney" Relationship="bsavModel.FK_PasportAttorney_Pol" FromRole="Gender" ToRole="PasportAttorney" />
+          <NavigationProperty Name="PhysicalPerson" Relationship="bsavModel.FK_PhysicalPerson_Pol" FromRole="Gender" ToRole="PhysicalPerson" />
+        </EntityType>
+        <EntityType Name="LegalPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="OGPH" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="INN" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EGPUL" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="LegalAdress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDPass" Type="Int32" Nullable="false" />
+          <Property Name="Doverinnosti" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts" Relationship="bsavModel.FK_LegalPerson_Accounts" FromRole="LegalPerson" ToRole="Accounts" />
+          <NavigationProperty Name="PasportAttorney" Relationship="bsavModel.FK_LegalPerson_PasportAttorney" FromRole="LegalPerson" ToRole="PasportAttorney" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeOper" Type="DateTime" Precision="3" />
+          <Property Name="SumOper" Type="Int32" />
+          <NavigationProperty Name="Bills" Relationship="bsavModel.FK_Operations_Bills" FromRole="Operations" ToRole="Bills" />
+        </EntityType>
+        <EntityType Name="PasportAttorney">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerriaPas" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPas" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Pol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="bsavModel.FK_PasportAttorney_Pol" FromRole="PasportAttorney" ToRole="Gender" />
+          <NavigationProperty Name="LegalPerson" Relationship="bsavModel.FK_LegalPerson_PasportAttorney" FromRole="PasportAttorney" ToRole="LegalPerson" />
+        </EntityType>
+        <EntityType Name="PhysicalPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SeriaPas" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPas" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="IDGender" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="bsavModel.FK_PhysicalPerson_Accounts" FromRole="PhysicalPerson" ToRole="Accounts" />
+          <NavigationProperty Name="Gender" Relationship="bsavModel.FK_PhysicalPerson_Pol" FromRole="PhysicalPerson" ToRole="Gender" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts" Relationship="bsavModel.FK_Accounts_Statuses" FromRole="Statuses" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Accounts_Statuses">
+          <End Type="bsavModel.Statuses" Role="Statuses" Multiplicity="0..1" />
+          <End Type="bsavModel.Accounts" Role="Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="IDStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bills_Accounts">
+          <End Type="bsavModel.Accounts" Role="Accounts" Multiplicity="0..1" />
+          <End Type="bsavModel.Bills" Role="Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="IDAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalPerson_Accounts">
+          <End Type="bsavModel.Accounts" Role="Accounts" Multiplicity="1" />
+          <End Type="bsavModel.LegalPerson" Role="LegalPerson" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LegalPerson">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhysicalPerson_Accounts">
+          <End Type="bsavModel.Accounts" Role="Accounts" Multiplicity="1" />
+          <End Type="bsavModel.PhysicalPerson" Role="PhysicalPerson" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhysicalPerson">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bills_BillsTypes1">
+          <End Type="bsavModel.BillsTypes" Role="BillsTypes" Multiplicity="1" />
+          <End Type="bsavModel.Bills" Role="Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillsTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="IDType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bills_Cities">
+          <End Type="bsavModel.Cities" Role="Cities" Multiplicity="0..1" />
+          <End Type="bsavModel.Bills" Role="Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="IDCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bills_Filials">
+          <End Type="bsavModel.Filials" Role="Filials" Multiplicity="1" />
+          <End Type="bsavModel.Bills" Role="Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Filials">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="IDFilial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operations_Bills">
+          <End Type="bsavModel.Bills" Role="Bills" Multiplicity="1" />
+          <End Type="bsavModel.Operations" Role="Operations" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bills">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PasportAttorney_Pol">
+          <End Type="bsavModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="bsavModel.PasportAttorney" Role="PasportAttorney" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PasportAttorney">
+              <PropertyRef Name="Pol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhysicalPerson_Pol">
+          <End Type="bsavModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="bsavModel.PhysicalPerson" Role="PhysicalPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhysicalPerson">
+              <PropertyRef Name="IDGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LegalPerson_PasportAttorney">
+          <End Type="bsavModel.PasportAttorney" Role="PasportAttorney" Multiplicity="1" />
+          <End Type="bsavModel.LegalPerson" Role="LegalPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasportAttorney">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LegalPerson">
+              <PropertyRef Name="IDPass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище bsavModelContainer" CdmEntityContainer="BankEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="bsavModel.Accounts">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="SecretWord" ColumnName="SecretWord" />
+                <ScalarProperty Name="IDStatus" ColumnName="IDStatus" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IPLast" ColumnName="IPLast" />
+                <ScalarProperty Name="IPReg" ColumnName="IPReg" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="bsavModel.Bills">
+              <MappingFragment StoreEntitySet="Bills">
+                <ScalarProperty Name="IDCity" ColumnName="IDCity" />
+                <ScalarProperty Name="DataClose" ColumnName="DataClose" />
+                <ScalarProperty Name="DataOpen" ColumnName="DataOpen" />
+                <ScalarProperty Name="IDAccount" ColumnName="IDAccount" />
+                <ScalarProperty Name="IDType" ColumnName="IDType" />
+                <ScalarProperty Name="IDFilial" ColumnName="IDFilial" />
+                <ScalarProperty Name="IDOperation" ColumnName="IDOperation" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillsTypes">
+            <EntityTypeMapping TypeName="bsavModel.BillsTypes">
+              <MappingFragment StoreEntitySet="BillsTypes">
+                <ScalarProperty Name="NameType" ColumnName="NameType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="bsavModel.Cities">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Filials">
+            <EntityTypeMapping TypeName="bsavModel.Filials">
+              <MappingFragment StoreEntitySet="Filials">
+                <ScalarProperty Name="TimeClose" ColumnName="TimeClose" />
+                <ScalarProperty Name="TimeOpen" ColumnName="TimeOpen" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="NumberFilial" ColumnName="NumberFilial" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="bsavModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LegalPerson">
+            <EntityTypeMapping TypeName="bsavModel.LegalPerson">
+              <MappingFragment StoreEntitySet="LegalPerson">
+                <ScalarProperty Name="Doverinnosti" ColumnName="Doverinnosti" />
+                <ScalarProperty Name="IDPass" ColumnName="IDPass" />
+                <ScalarProperty Name="LegalAdress" ColumnName="LegalAdress" />
+                <ScalarProperty Name="EGPUL" ColumnName="EGPUL" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="OGPH" ColumnName="OGPH" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operations">
+            <EntityTypeMapping TypeName="bsavModel.Operations">
+              <MappingFragment StoreEntitySet="Operations">
+                <ScalarProperty Name="SumOper" ColumnName="SumOper" />
+                <ScalarProperty Name="TimeOper" ColumnName="TimeOper" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasportAttorney">
+            <EntityTypeMapping TypeName="bsavModel.PasportAttorney">
+              <MappingFragment StoreEntitySet="PasportAttorney">
+                <ScalarProperty Name="Pol" ColumnName="Pol" />
+                <ScalarProperty Name="NumberPas" ColumnName="NumberPas" />
+                <ScalarProperty Name="SerriaPas" ColumnName="SerriaPas" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhysicalPerson">
+            <EntityTypeMapping TypeName="bsavModel.PhysicalPerson">
+              <MappingFragment StoreEntitySet="PhysicalPerson">
+                <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+                <ScalarProperty Name="NumberPas" ColumnName="NumberPas" />
+                <ScalarProperty Name="SeriaPas" ColumnName="SeriaPas" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="bsavModel.Statuses">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bsavModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
