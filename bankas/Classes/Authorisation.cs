@@ -43,6 +43,8 @@ namespace bankas.Classes
                 if (sc.CheckHashEquil(usr.Pass, sc.GetHash(PbPassIn.Password)))
                 {
                     IdSave.Login = usr.Login;
+                    IdSave.Date = DateTime.Now.ToString("d");
+                    IdSave.Day = DateTime.Now.ToString("ddd");
                     MessageBox.Show($"Здравствуйте, {usr.Login}");
                     MainMenu menu = new MainMenu();
                     menu.Show();

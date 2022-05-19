@@ -31,6 +31,8 @@ namespace bankas
         public void LoadDateLog() //Загрузка счетов клиента
         {
             txtLog.Text = IdSave.Login;
+            txtDate.Text = IdSave.Date;
+            txtDay.Text = IdSave.Day;
         }
 
             private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

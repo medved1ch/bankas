@@ -157,7 +157,9 @@
         <StackPanel Margin="225,40,5,360" Background="#FF565656">
 
         </StackPanel>
-        <TextBlock  x:Name="txtLog" HorizontalAlignment="Left" Height="30" Margin="225,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"/>
+        <TextBlock  x:Name="txtLog" HorizontalAlignment="Left" Height="30" Margin="225,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" FontSize="24" FontWeight="Bold"/>
+        <TextBlock x:Name="txtDate" HorizontalAlignment="Left" Height="30" Margin="365,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="24"/>
+        <TextBlock x:Name="txtDay" HorizontalAlignment="Left" Height="30" Margin="500,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontWeight="Bold" FontSize="24"/>
 
 
 
