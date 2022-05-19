@@ -121,7 +121,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <StackPanel Height="550" Width="220" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF3557DA">
+        <StackPanel Height="546" Width="215" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF3557DA" Margin="5,0,0,0">
             <StackPanel Height="65" Orientation="Horizontal">
                 <Image Margin="10,5,0,0" Source="/image/bitok.png" Height="40" Width="40"/>
                 <TextBlock Height="40" TextWrapping="Wrap" Text="BitBank" Width="60" FontWeight="Bold" Foreground="White" Margin="10,30,0,15" FontSize="16"/>
@@ -133,17 +133,17 @@
                         <hc:EventToCommand Command="{Binding SwitchItemCmd}" PassEventArgsToCommand="True" />
                     </hc:EventTrigger>
                 </hc:Interaction.Triggers>
-                <hc:SideMenuItem Header="Главная" Background="{x:Null}">
+                <hc:SideMenuItem Header="Главная" x:Name="smMain" Background="{x:Null}" MouseLeftButtonDown="smMain_MouseLeftButtonDown">
                     <hc:SideMenuItem.Icon>
                         <Image  Width="24" Height="24" Source="/image/icons8-home-48.png"/>
                     </hc:SideMenuItem.Icon>
                 </hc:SideMenuItem>
-                <hc:SideMenuItem Header="Платежи" Background="{x:Null}">
+                <hc:SideMenuItem Header="Платежи" x:Name="smPay" Background="{x:Null}">
                     <hc:SideMenuItem.Icon>
                         <Image  Width="24" Height="24" Source="/image/icons8-bitcoin-accepted-48.png"/>
                     </hc:SideMenuItem.Icon>
                 </hc:SideMenuItem>
-                <hc:SideMenuItem Header="Настройки" Background="{x:Null}">
+                <hc:SideMenuItem Header="Настройки" Background="{x:Null}" x:Name="smSet" MouseLeftButtonDown="smSet_MouseLeftButtonDown">
                     <hc:SideMenuItem.Icon>
                         <Image  Width="24" Height="24" Source="/image/icons8-settings-30.png"/>
                     </hc:SideMenuItem.Icon>
@@ -151,16 +151,16 @@
 
             </hc:SideMenu>
         </StackPanel>
-        <Rectangle HorizontalAlignment="Left" Height="70" Margin="225,5,0,0" Stroke="Black" VerticalAlignment="Top" Width="620"/>
-        <Button Style="{DynamicResource ButtonStyle1}" x:Name="BtnMin" HorizontalAlignment="Left" Height="24" Margin="789,10,0,0" VerticalAlignment="Top" Width="24" Click="BtnMin_Click"/>
-        <Button Style="{DynamicResource ButtonStyle2}" x:Name="BtnClose" HorizontalAlignment="Left" Height="24" Margin="818,10,0,0" VerticalAlignment="Top" Width="24" Click="BtnClose_Click"/>
-        <Button Style="{DynamicResource ButtonStyle3}" x:Name="BtnLogOut" HorizontalAlignment="Left" Height="24" Margin="760,10,0,0" VerticalAlignment="Top" Width="24"/>
+        <Rectangle HorizontalAlignment="Left" Height="75" Margin="225,2,0,0" Stroke="Black" VerticalAlignment="Top" Width="620"/>
+        <Button Style="{DynamicResource ButtonStyle1}" x:Name="BtnMin" HorizontalAlignment="Left" Height="24" Margin="787,10,0,0" VerticalAlignment="Top" Width="24" Click="BtnMin_Click"/>
+        <Button Style="{DynamicResource ButtonStyle2}" x:Name="BtnClose" HorizontalAlignment="Left" Height="24" Margin="816,10,0,0" VerticalAlignment="Top" Width="24" Click="BtnClose_Click"/>
+        <Button Style="{DynamicResource ButtonStyle3}" x:Name="BtnLogOut" HorizontalAlignment="Left" Height="24" Margin="758,10,0,0" VerticalAlignment="Top" Width="24"/>
         <TextBlock  x:Name="txtLog" HorizontalAlignment="Left" Height="30" Margin="227,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" FontSize="24" FontWeight="Bold"/>
         <TextBlock x:Name="txtDate" HorizontalAlignment="Left" Height="30" Margin="365,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="24"/>
         <TextBlock x:Name="txtDay" HorizontalAlignment="Left" Height="30" Margin="500,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontWeight="Bold" FontSize="24"/>
         <TextBlock x:Name="txtTime" HorizontalAlignment="Left" Height="31" Margin="760,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" FontWeight="Bold" FontSize="20"/>
-        <Rectangle HorizontalAlignment="Left" Height="270" Margin="225,276,0,0" Stroke="Black" VerticalAlignment="Top" Width="620" Fill="#FF443030"/>
-        <Rectangle HorizontalAlignment="Left" Height="199" Margin="225,76,0,0" Stroke="Black" VerticalAlignment="Top" Width="620" Fill="#FF4E4E4E"/>
+        <Rectangle x:Name="rectRed" HorizontalAlignment="Left" Height="271" Margin="225,277,0,0" Stroke="Black" VerticalAlignment="Top" Width="620" Fill="#FF443030"/>
+        <Rectangle x:Name="rectGray" HorizontalAlignment="Left" Height="198" Margin="225,78,0,0" Stroke="Black" VerticalAlignment="Top" Width="620" Fill="#FF4E4E4E"/>
 
 
 

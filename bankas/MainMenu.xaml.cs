@@ -62,5 +62,17 @@ namespace bankas
             start.Show();
             this.Close();
         }
+
+        private void smSet_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            rectGray.Visibility = Visibility.Hidden;
+            rectRed.Visibility = Visibility.Hidden;
+        }
+
+        private void smMain_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            rectGray.Visibility = Visibility.Visible;
+            rectRed.Visibility = Visibility.Visible;
+        }
     }
 }
