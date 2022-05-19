@@ -8,6 +8,7 @@ namespace bankas.Classes
 {
     internal class IdSave
     {
-        public static string Login, IDAcc, Date, Day;
+        public static string Login, Date, Day;
+        public static int IDAcc;
     }
 }

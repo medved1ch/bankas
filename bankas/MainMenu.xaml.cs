@@ -27,7 +27,13 @@ namespace bankas
         {
             InitializeComponent();
             LoadDateLog();
+            var timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.IsEnabled = true;
+            timer.Tick += (s, e) => { txtTime.Text = DateTime.Now.ToString("T"); };
+            timer.Start();
         }
+
         public void LoadDateLog() //Загрузка счетов клиента
         {
             txtLog.Text = IdSave.Login;

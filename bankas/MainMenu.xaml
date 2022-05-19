@@ -151,15 +151,17 @@
 
             </hc:SideMenu>
         </StackPanel>
-        <Button Style="{DynamicResource ButtonStyle1}" x:Name="BtnMin" HorizontalAlignment="Left" Height="24" Margin="792,11,0,0" VerticalAlignment="Top" Width="24" Click="BtnMin_Click"/>
-        <Button Style="{DynamicResource ButtonStyle2}" x:Name="BtnClose" HorizontalAlignment="Left" Height="24" Margin="821,11,0,0" VerticalAlignment="Top" Width="24" Click="BtnClose_Click"/>
-        <Button Style="{DynamicResource ButtonStyle3}" x:Name="BtnLogOut" HorizontalAlignment="Left" Height="24" Margin="763,11,0,0" VerticalAlignment="Top" Width="24"/>
-        <StackPanel Margin="225,40,5,360" Background="#FF565656">
+        <Rectangle HorizontalAlignment="Left" Height="70" Margin="225,5,0,0" Stroke="Black" VerticalAlignment="Top" Width="620"/>
+        <Button Style="{DynamicResource ButtonStyle1}" x:Name="BtnMin" HorizontalAlignment="Left" Height="24" Margin="789,10,0,0" VerticalAlignment="Top" Width="24" Click="BtnMin_Click"/>
+        <Button Style="{DynamicResource ButtonStyle2}" x:Name="BtnClose" HorizontalAlignment="Left" Height="24" Margin="818,10,0,0" VerticalAlignment="Top" Width="24" Click="BtnClose_Click"/>
+        <Button Style="{DynamicResource ButtonStyle3}" x:Name="BtnLogOut" HorizontalAlignment="Left" Height="24" Margin="760,10,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBlock  x:Name="txtLog" HorizontalAlignment="Left" Height="30" Margin="227,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" FontSize="24" FontWeight="Bold"/>
+        <TextBlock x:Name="txtDate" HorizontalAlignment="Left" Height="30" Margin="365,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="24"/>
+        <TextBlock x:Name="txtDay" HorizontalAlignment="Left" Height="30" Margin="500,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontWeight="Bold" FontSize="24"/>
+        <TextBlock x:Name="txtTime" HorizontalAlignment="Left" Height="31" Margin="760,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" FontWeight="Bold" FontSize="20"/>
+        <Rectangle HorizontalAlignment="Left" Height="270" Margin="225,276,0,0" Stroke="Black" VerticalAlignment="Top" Width="620" Fill="#FF443030"/>
+        <Rectangle HorizontalAlignment="Left" Height="199" Margin="225,76,0,0" Stroke="Black" VerticalAlignment="Top" Width="620" Fill="#FF4E4E4E"/>
 
-        </StackPanel>
-        <TextBlock  x:Name="txtLog" HorizontalAlignment="Left" Height="30" Margin="225,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" FontSize="24" FontWeight="Bold"/>
-        <TextBlock x:Name="txtDate" HorizontalAlignment="Left" Height="30" Margin="365,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="24"/>
-        <TextBlock x:Name="txtDay" HorizontalAlignment="Left" Height="30" Margin="500,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontWeight="Bold" FontSize="24"/>
 
 
 

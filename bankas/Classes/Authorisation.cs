@@ -42,6 +42,7 @@ namespace bankas.Classes
                 SimpleCommand sc = new SimpleCommand();
                 if (sc.CheckHashEquil(usr.Pass, sc.GetHash(PbPassIn.Password)))
                 {
+                    IdSave.IDAcc = usr.ID;
                     IdSave.Login = usr.Login;
                     IdSave.Date = DateTime.Now.ToString("d");
                     IdSave.Day = DateTime.Now.ToString("ddd");
